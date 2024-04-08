@@ -1,0 +1,39 @@
+[
+  {
+    "completed": false,
+    "date": "2024-04-07",
+    "description": "Write and finalize the proposal for the upcoming project.",
+    "id": 1,
+    "important": true,
+    "timestamp": 1670458000,
+    "title": "Complete Project Proposal Proposal Proposal Proposal"
+  },
+  {
+    "completed": false,
+    "date": "2024-04-07",
+    "description":
+      "Buy groceries for the week including fruits, vegetables, and dairy.",
+    "id": 2,
+    "important": false,
+    "timestamp": 1670458010,
+    "title": "Grocery Shopping"
+  },
+  {
+    "completed": true,
+    "date": "2024-04-07",
+    "description": "Check in with mom and see how she's doing.",
+    "id": 3,
+    "important": true,
+    "timestamp": 1670458020,
+    "title": "Call Mom"
+  },
+  {
+    "completed": false,
+    "date": "2024-04-07",
+    "description": "Read the last few chapters of The Great Gatsby.",
+    "id": 4,
+    "important": false,
+    "timestamp": 1670458030,
+    "title": "Finish Book"
+  }
+]

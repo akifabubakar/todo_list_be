@@ -1,36 +1,38 @@
-version: '3.7'
-
+version: '3.9'
 services:
-  # nest:
-  #   container_name: 'nest'
-  #   build:
-  #     context: .
-  #     target: development
-  #   volumes:
-  #     - .:/usr/src/app
-  #     # - /usr/src/app/node_modules
-  #   ports:
-  #     - ${SERVER_PORT}:${SERVER_PORT}
-  #     - 9229:9229
-  #   command: npm run start:debug
-  #   env_file:
-  #     - .env
-  #   depends_on:
-  #     - mongo
-  mongo:
+  app:
+    container_name: server-dev
+    image: server-dev:1.0.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: npm run start:debug
+    ports:
+      - 3000:3000
+      - 9229:9229
+    networks:
+      - server-network
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URL: mongodb
+
+  mongodb:
     image: mongo:latest
-    container_name: 'nest_mongo'
+    container_name: server-mongodb
     volumes:
       - mongodb_data_container:/data/db
-    # env_file:
-    #   - .env
     environment:
       - MONGO_INITDB_DATABASE=todos_db
-      # - MONGO_INITDB_ROOT_USERNAME=admin
-      # - MONGO_INITDB_ROOT_PASSWORD=password
     ports:
       - 27017:27017
+    networks:
+      - server-network
 networks:
-  webnet:
+  server-network:
 volumes:
   mongodb_data_container:
